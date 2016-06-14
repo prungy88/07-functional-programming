@@ -108,6 +108,16 @@
         ///the result of calling Article.allAuthors() is an array of author names
     return Article.allAuthors().map(function(a) { // 'a' is a reference to an individual author.
       return {
+        name: a,
+        numWords: Article.allArticles.filter(function(curArticle) {
+          return a === curArticle.author;
+        })
+        .map(function(art) {
+          return art.body.match(/\w+/g).length;
+        })
+        .reduce(function(acc, cur) {
+          return acc + cur;
+        })
         // name:
         // numWords: someCollection.filter(function(curArticle) {
         //  what do we return here to check for matching authors?
@@ -117,5 +127,5 @@
       };
     });
   };
-
-});
+  module.Article = Article;
+})(window);
