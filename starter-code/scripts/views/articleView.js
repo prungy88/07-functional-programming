@@ -1,5 +1,6 @@
 // NOTE: Let's wrap the entire contents of this file in an IIFE.
 // Pass in to the IIFE a module, upon which objects can be attached for later access.
+//module is a placeholder for whatever context you want to attach the objects to
 (function(module) {
 
   // Configure a view object, to hold all our functions for dynamic updates and article-related event handlers.
@@ -74,7 +75,7 @@
     articleView.setTeasers();
   };
 
-  Article.fetchAll(/* TODO: insert the proper function here */);
+  Article.fetchAll(articleView.renderIndexPage);
 
   module.articleView = articleView;
 })(window);
